@@ -20,14 +20,25 @@ var Form = React.createClass({
   render: function () {
     return (
       <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-        <label>Peak Load: </label>
-        <input type="number" ref="load"  />
-        <select ref="profile">
-          <option value=''>--Select Load Profile --</option>
-          <option value="High School">High School</option>
-          <option value="Office Building">Office Building</option>
-        </select>
-        <input type="submit" />
+        <div className="input-group col-xs-11">
+          <div className="input-group-addon">Peak Load:</div>
+          <span className="input-group-addon">
+            <input type="number" ref="load"  />
+          </span>
+          <span className="input-group-addon">
+            <select ref="profile">
+              <option value=''>--Select Load Profile --</option>
+              <option value="Middle School">Middle School</option>
+              <option value="High School">High School</option>
+              <option value="Office Building">Office Building</option>
+              <option value="College">College Campus</option>
+              <option value="Manual">Manual</option>
+            </select>
+          </span>
+          <span className="input-group-addon">
+            <input type="submit" id="formsubmit" value="View" />
+          </span>
+        </div>
       </form>
     );
   }

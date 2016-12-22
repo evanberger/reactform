@@ -1,4 +1,82 @@
 /* CSS declarations go here */
 table {
-  outline: 1px solid blue;
+  width: 540px;
+  outline: 1px solid  #337ab7;
+  background: whitesmoke;
+}
+
+.Collapsible__trigger {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333333;
+  position: relative;
+  border: 1px solid white;
+  padding: 10px;
+  background: lightsteelblue;
+  color: navy;
+}
+
+.Collapsible__trigger:after {
+    font-family: 'font-awesome';
+    content: '\21a8';
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: block;
+    transition: transform 200ms;
+  }
+
+  .col-form-label {
+    margin-left: 5px;
+  }
+
+  .header {
+    width: 100%;
+    background: #337ab7;
+  }
+
+  #headertext {
+    color: whitesmoke;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  #headeroverride {
+    width: 540px;
+  }
+
+  .panel-heading td {
+    background: #337ab7;
+    color: white;
+    font-size: 16px;
+    width: 540px;
+    border: 2px solid white;
+  }
+
+  .leftmost {
+    width: 120px;
+    font-weight: bold;
+    border: 1px solid #337ab7;
+  }
+
+  .rightmost {
+    width: 420px;
+    border: 1px solid #337ab7;
+  }
+
+.formlabel {
+  width: 120px;
+}
+#formsubmit {
+  font-size: 14px;
+  color: #337ab7;
+  font-weight: bold;
+}
+
+.navbar-icon {
+  font-family: serif;
+  padding-left: 10px;
+  background: whitesmoke;
 }
