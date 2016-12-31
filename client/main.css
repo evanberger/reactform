@@ -1,4 +1,9 @@
 /* CSS declarations go here */
+.headericon {
+  color: whitesmoke;
+  padding-right: 5px; 
+}
+
 table {
   width: 540px;
   outline: 1px solid  #337ab7;
@@ -7,63 +12,69 @@ table {
 
 .Collapsible__trigger {
   display: block;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
+  font-family: 'Oswald', serif;
   text-decoration: none;
-  color: #333333;
   position: relative;
   border: 1px solid white;
   padding: 10px;
-  background: lightsteelblue;
-  color: navy;
+  background: #337ab7;
+  color: azure;
 }
 
 .Collapsible__trigger:after {
-    font-family: 'font-awesome';
-    content: '\21a8';
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    display: block;
-    transition: transform 200ms;
-  }
+  font-family: 'FontAwesome';
+  content: '\f7';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+  transition: transform 300ms; }
+.Collapsible__trigger.is-open:after {
+  transform: rotateZ(90deg); }
 
-  .col-form-label {
+.col-form-label {
     margin-left: 5px;
   }
 
-  .header {
-    width: 100%;
-    background: #337ab7;
-  }
 
-  #headertext {
-    color: whitesmoke;
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  #headeroverride {
+#headeroverride {
     width: 540px;
   }
 
-  .panel-heading td {
+.panel-heading td {
     background: #337ab7;
     color: white;
     font-size: 16px;
     width: 540px;
-    border: 2px solid white;
-  }
+    border: 1px solid white;
+    }
 
-  .leftmost {
+.leftmost {
     width: 120px;
     font-weight: bold;
     border: 1px solid #337ab7;
   }
 
-  .rightmost {
+.rightmost {
     width: 420px;
     border: 1px solid #337ab7;
+  }
+
+.hourtype select {
+    background: whitesmoke;
+  }
+
+select option {
+  text-align: center;
+}
+
+.tableheader td {
+    text-align: center;
+    background: #337ab7;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    font-size: 16px;
   }
 
 .formlabel {
@@ -75,8 +86,93 @@ table {
   font-weight: bold;
 }
 
-.navbar-icon {
-  font-family: serif;
+#headertext {
+  color: white;
+  text-align: center;
+  background: #337ab7;
+  margin-left: 300px;
+  margin-right: 300px;
+  font-weight: normal;
+  padding: 20px 0;
+}
+
+#stripe {
+	text-align: center;
+  padding-left: 5px;
+	height: 40px;
+	background: whitesmoke;
+  border-bottom: 1px solid black;
+	font-family: "Montserrat";
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+
+
+#detailsChart {
+  height: 250px;
+  width: 325px;
+}
+
+.chart {
+  height: 300px;
+  width: 425px;
+}
+
+.blue {
+  color: blue;
+}
+
+/* Header component*/
+header {
+  font-family: 'Roboto Condensed', sans-serif;
+  background: #337ab7;
+  display: flex;
+  align-items: center;
   padding-left: 10px;
-  background: whitesmoke;
+}
+
+header a {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: whitesmoke;
+  align-items: center;
+  font-size: 16px;
+}
+
+.site-nav li {
+  font-size: 12px;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.stripe-button .selected {
+	color: white;
+	background: steelblue;
+  margin: 6px;
+}
+
+
+/* for Table component */
+.homebutton {
+  font-size: 14px;
+  font-family: 'Oswald', serif;
+  color: azure;
+  background: #337ab7;
+}
+#hourstable select {
+  width: 27px;
+}
+
+/* Versus component */
+.versus {
+  padding-top: 20px;
+}
+
+/* for Versus component */
+.red {
+  color: crimson;
 }

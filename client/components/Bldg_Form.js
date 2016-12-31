@@ -1,25 +1,84 @@
 var React = require('react');
 import Collapsible from 'react-collapsible';
+import appState from '../appState';
 
 var BuildingForm = React.createClass({
   handleChange: function(event) {
     console.log('Changing text...');
   },
+  getInitialState: function(){
+    return {
+      name: '',
+      existingRate: '',
+      iceStorageRate: '',
+      chillerType: 'Air-Cooled',
+      coolingMonths: 8,
+      chillerTonnage: 0,
+      ACcheckboxChecked: false,
+      WCcheckboxChecked: false,
+      standardChillerEfficiency: '',
+      ddChillerEfficiency: '',
+      iceMakingEfficiency: '',
+      standardChillerCost: 1250,
+      ddChillerCost: 1250,
+      icebankCost: 20000,
+      hxCost: 0,
+      rebate: 0,
+      addlIceCost: 0,
+      downsizeDuctSavings: 0,
+      downsizePipeSavings: 0,
+      roundDuctSavings: 0
+    }
+  },
+  // My attempt to toggle air-cooled/water-cooled; not working
+  chillerType: function() {
+    if (appState.chillerType == "Water-Cooled") {
+      appState.chillerType = "Air-Cooled";
+    } else {
+      appState.chillerType = "Water-Cooled";
+    }
+  },
+  handleACcheckbox: function (e) {
+    appState.chillerType = "Air-Cooled";
+    appState.standardChillerEfficiency = 1.10;
+    appState.ddChillerEfficiency = 1.10;
+    appState.iceMakingEfficiency = 1.10;
+    this.setState({
+      ACcheckboxChecked: e.target.checked,
+      standardChillerEfficiency: 1.10,
+      ddChillerEfficiency: 1.10,
+      iceMakingEfficiency: 1.10,
+      chillerType: 'Air-Cooled',
+      WCcheckboxChecked: false
+    });
+  },
+  handleWCcheckbox: function (e) {
+    appState.chillerType = "Air-Cooled";
+    appState.standardChillerEfficiency = 0.8;
+    appState.ddChillerEfficiency = 0.85;
+    appState.iceMakingEfficiency = 0.9;
+    this.setState({
+      WCcheckboxChecked: e.target.checked,
+      standardChillerEfficiency: .8,
+      ddChillerEfficiency: .85,
+      iceMakingEfficiency: .9,
+      chillerType: "Water-Cooled",
+      ACcheckboxChecked: false
+    });
+  },
   handleSubmit: function(event) {
     event.preventDefault();
-    console.log(this.refs.load.value);
     var submittedData = {
       name: this.refs.name.value,
       existingRate: this.refs.existingRate.value,
       iceStorageRate:this.refs.iceStorageRate.value,
       chillerType:this.refs.chillerType.value,
       coolingMonths: this.refs.coolingMonths.value,
-      chillerTonnage: this.refs.chillerTonnage.value,
-      standardChillerEfficiency: this.refs.standardChillerEfficiency.value,
+       standardChillerEfficiency: this.refs.standardChillerEfficiency.value,
       ddChillerEfficiency: this.refs.ddChillerEfficiency.value,
       iceMakingEfficiency:this.refs.iceMakingEfficiency.value,
       standardChillerCost: this.refs.standardChillerCost.value,
-      ddChillerCost:this.refs.icemakingChillerCost.value,
+      ddChillerCost:this.refs.ddChillerCost.value,
       icebankCost: this.refs.icebankCost.value,
       hxCost:this.refs.hxCost.value,
       rebate: this.refs.rebate.value,
@@ -31,11 +90,65 @@ var BuildingForm = React.createClass({
     // Here, this.props.onFormSubmit is just linking Parent to child
     // It has no other purpose.
     this.props.onBuildingFormSubmit(submittedData);
-    this.refs.load.value = 0;
-    this.refs.profile.value = '';
+    console.log(submittedData.name);
+    console.log("Name is: " + appState.name);
   },
+  onNameChange: function(e){
+      this.setState({name: e.target.value });
+  },
+  onExistingRateChange: function(e){
+      this.setState({existingRate: e.target.value });
+  },
+  onIceStorageRateChange: function(e){
+      this.setState({iceStorageRate: e.target.value });
+  },
+  onCoolingMonthsChange: function(e) {
+    this.setState({coolingMonths: e.target.value});
+  },
+  onChillerTypeChange: function(e){
+      this.setState({chillerType: e.target.value })
+  },
+  // onChillerTonnageChange: function(e){
+  //     this.setState({chillerTonnage: e.target.value })
+  // },
+  onStandardChillerEfficiencyChange: function(e){
+      this.setState({standardChillerEfficiency: e.target.value })
+  },
+  onDdChillerEfficiencyChange: function(e){
+      this.setState({ddChillerEfficiency: e.target.value })
+  },
+  onIceMakingEfficiencyChangeceEfficiencyChange: function(e){
+      this.setState({iceMakingEfficiency: e.target.value })
+  },
+  onStandardChillerCostChange: function(e){
+      this.setState({standardChillerCost: e.target.value })
+  },
+  onDdChillerCostChange: function(e){
+      this.setState({ddChillerCost: e.target.value })
+  },
+  onIceBankCostChange: function(e){
+      this.setState({icebankCost: e.target.value })
+  },
+  onHxCostChange: function(e){
+      this.setState({hxCost: e.target.value })
+  },
+  onRebateChange: function(e){
+      this.setState({rebate: e.target.value })
+  },
+  onAddlIceCostChange: function(e){
+      this.setState({addlIceCost: e.target.value })
+  },
+  onDownsizeDuctSavingsChange: function(e){
+      this.setState({downsizeDuctSavings: e.target.value })
+  },
+  onDownsizePipeSavingsChange: function(e){
+      this.setState({downsizePipeSavings: e.target.value })
+  },
+  onRoundDuctSavingsChange: function(e){
+      this.setState({roundDuctSavings: e.target.value })
+  },
+    render: function () {
 
-  render: function () {
     return (
       <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
       <div>
@@ -43,13 +156,19 @@ var BuildingForm = React.createClass({
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Project Name</label>
           <div className="col-xs-6">
-            <input ref="name" id="name" className="form-control" className="form-control" type="text" />
+            <input
+              onChange={this.onNameChange}
+              value={this.name}
+              ref="name" id="name" className="form-control" className="form-control" type="text" />
           </div>
         </div>
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Existing Rate</label>
           <div className="col-xs-6">
-            <select ref="existingRate" id="existingRate" className="form-control">
+            <select
+              onChange={this.onExistingRateChange}
+              value={this.state.existingRate}
+              ref="existingRate" id="existingRate" className="form-control">
               <option value="LGS">LGS</option>
               <option value="LGS-TOU">LGS-TOU</option>
             </select>
@@ -58,7 +177,10 @@ var BuildingForm = React.createClass({
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Ice Storage Rate</label>
           <div className="col-xs-6">
-            <select ref="iceStorageRate" id="iceStorageRate" className="form-control">
+            <select
+              onChange={this.onIceStorageRateChange}
+              value={this.state.iceStorageRate}
+              ref="iceStorageRate" id="iceStorageRate" className="form-control">
               <option value="LGS">LGS</option>
               <option value="LGS-TOU">LGS-TOU</option>
             </select>
@@ -67,12 +189,15 @@ var BuildingForm = React.createClass({
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Months of Cooling</label>
           <div className="col-xs-6">
-            <select ref="coolingMonths" id="coolingMonths" className="form-control">
+            <select
+              onChange={this.onCoolingMonthsChange}
+              value={this.state.coolingMonths}
+              ref="coolingMonths" id="coolingMonths" className="form-control">
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
               <option value="7">7</option>
-              <option value="8" selected>8</option>
+              <option value="8">8</option>
               <option value="9">9</option>
               <option value="10">10</option>
               <option value="11">11</option>
@@ -85,36 +210,59 @@ var BuildingForm = React.createClass({
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Air-Cooled / Water-Cooled</label>
           <div className="col-xs-6">
-            <select ref="chillerType" id="chillerType" className="form-control">
+            <select ref="chillerType"
+              onChange={this.onChillerTypeChange}
+              value={this.state.chillerType}
+              id="chillerType" className="form-control">
               <option value="Air-Cooled">Air-Cooled</option>
               <option value="Water-Cooled">Water-Cooled</option>
             </select>
           </div>
         </div>
         <div className="form-group row">
-          <label className="col-xs-5 col-form-label">Chiller Tonnage</label>
-          <div className="col-xs-6">
-            <input ref="chillerTonnage" id="chillerTonnage" className="form-control" type="text"/>
-          </div>
+          <label className="col-xs-5 col-form-label">Use Air-Cooled Defaults</label>
+          <span className="col-xs-1 form-group-addon">
+            <input type="checkbox" checked={this.state.ACcheckboxChecked}
+              onChange={this.handleACcheckbox}/>
+          </span>
+        </div>
+        <div className="form-group row">
+          <label className="col-xs-5 col-form-label">Use Water-Cooled Defaults</label>
+          <span className="col-xs-1 form-group-addon">
+            <input type="checkbox" checked={this.state.WCcheckboxChecked}
+              onChange={this.handleWCcheckbox}/>
+          </span>
         </div>
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Chiller Efficiency, standard chiller</label>
           <div className="col-xs-6 input-group">
-            <input ref="standardChillerEfficiency" className="form-control" id="standardChillerEfficiency" type="number"/>
+            <input type="number" ref="standardChillerEfficiency"
+              value={this.state.standardChillerEfficiency}
+              onChange={this.onStandardChillerEfficiencyChange}
+              min={0.5} max={2} step={.01}
+              className="form-control" id="standardChillerEfficiency" />
             <div className="input-group-addon">kW/ton</div>
           </div>
         </div>
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Dual-Duty Chiller Efficiency</label>
           <div className="col-xs-6 input-group">
-            <input ref="ddChillerEfficiency" className="form-control" id="ddChillerEfficiency" type="number"/>
+            <input type="number" ref="ddChillerEfficiency"
+              value={this.state.ddChillerEfficiency}
+              onChange={this.onDdChillerEfficiencyChange}
+              min={0.5} max={2} step={.01}
+              className="form-control" id="ddChillerEfficiency" />
             <div className="input-group-addon">kW/ton</div>
           </div>
         </div>
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Ice-Making Chiller Efficiency</label>
           <div className="input-group col-xs-6">
-            <input ref="iceMakingEfficiency" className="form-control" id="iceMakingEfficiency" type="number"/>
+            <input ref="iceMakingEfficiency" className="form-control"
+              value={this.state.iceMakingEfficiency}
+              onChange={this.onIceMakingEfficiencyChange}
+              min={0.5} max={2} step={.01}
+               id="iceMakingEfficiency" type="number"/>
             <div className="input-group-addon">kW/ton</div>
           </div>
         </div>
@@ -124,7 +272,10 @@ var BuildingForm = React.createClass({
         <label className="col-xs-5 col-form-label">Non Ice Chiller Cost:</label>
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
-            <input ref="standardChillerCost" className="form-control" id="nonIceChillerCost" type="number" placeholder="500"/>
+            <input
+              onChange={this.onStandardChillerCostChange}
+              value={this.state.standardChillerCost}
+              ref="standardChillerCost" className="form-control" id="nonIceChillerCost" type="number" placeholder="500"/>
             <div className="input-group-addon">/ton</div>
           </div>
         </div>
@@ -132,7 +283,10 @@ var BuildingForm = React.createClass({
           <label className="col-xs-5 col-form-label">Ice-Making Chiller Cost:</label>
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
-            <input ref="ddChillerCost" className="form-control" id="icemakingChillerCost" type="number" placeholder="500" />
+            <input
+              onChange={this.onDdChillerEfficiencyChange}
+              value={this.state.ddChillerCost}
+              ref="ddChillerCost" className="form-control" id="icemakingChillerCost" type="number" placeholder="500" />
             <div className="input-group-addon">/ton</div>
           </div>
         </div>
@@ -140,7 +294,10 @@ var BuildingForm = React.createClass({
           <label className="col-xs-5 col-form-label" htmlFor="icebankCost">Cost per IceBank tank</label>
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
-            <input ref="icebankCost" className="form-control" id="icebankCost" type="number" placeholder="14,000"/>
+            <input
+              onChange={this.onIceBankCostChange}
+              value={this.state.icebankCost}
+              ref="icebankCost" className="form-control" id="icebankCost" type="number" placeholder="20,000"/>
             <div className="input-group-addon">/tank</div>
           </div>
         </div>
@@ -148,7 +305,10 @@ var BuildingForm = React.createClass({
           <label className="col-xs-5 col-form-label">Cost for Plate-Frame HX</label>
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
-            <input ref="hxCost" className="form-control" id="hxCost" type="number" placeholder="60"/>
+            <input
+              onChange={this.onHxCostChange}
+              value={this.state.hxCost}
+              ref="hxCost" className="form-control" id="hxCost" type="number" placeholder="60"/>
             <div className="input-group-addon">/ton</div>
           </div>
         </div>
@@ -156,14 +316,20 @@ var BuildingForm = React.createClass({
           <label className="col-xs-5 col-form-label">Addl Costs for Ice Storage</label>
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
-            <input ref="addlIceCost" className="form-control" id="addlIceCost" type="number" placeholder="60,000"/>
+            <input
+              onChange={this.onAddlIceCostChange}
+              value={this.state.addlIceCost}
+              ref="addlIceCost" className="form-control" id="addlIceCost" type="number" placeholder="60,000"/>
           </div>
         </div>
         <div className="form-group row  ">
           <label className="col-xs-5 col-form-label">Rebate</label>
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
-            <input ref="rebate" className="form-control" id="rebate" type="number" placeholder="0"/>
+            <input
+              onChange={this.onRebateChange}
+              value={this.state.rebate}
+              ref="rebate" className="form-control" id="rebate" type="number" placeholder="0"/>
             <div className="input-group-addon">/kW</div>
           </div>
         </div>
@@ -171,26 +337,35 @@ var BuildingForm = React.createClass({
           <label className="col-xs-5 col-form-label">Savings from Downsized Ductwork</label>
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
-            <input ref="downsizeDuctSavings" className="form-control" id="downsizeDuctSavings" type="number" placeholder="0"/>
+            <input
+              onChange={this.onDownsizeDuctSavingsChange}
+              value={this.state.downsizeDuctSavings}
+              ref="downsizeDuctSavings" className="form-control" id="downsizeDuctSavings" type="number" placeholder="0"/>
           </div>
         </div>
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Savings from Downsized Piping & Pumps</label>
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
-            <input ref="downsizePipeSavings" className="form-control" id="downsizePipeSavings" type="number" placeholder="0"/>
+            <input
+              onChange={this.onDownsizePipeSavingsChange}
+              value={this.state.downsizePipeSavings}
+              ref="downsizePipeSavings" className="form-control" id="downsizePipeSavings" type="number" placeholder="0"/>
           </div>
         </div>
         <div className="form-group row">
           <label className="col-xs-5 col-form-label">Savings from Round Ductwork</label>
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
-            <input ref="roundDuctSavings" className="form-control" id="roundDuctSavings" type="number" placeholder="0"/>
+            <input
+              onChange={this.onRoundDuctSavingsChange}
+              value={this.state.roundDuctSavings}
+              ref="roundDuctSavings" className="form-control" id="roundDuctSavings" type="number" placeholder="0"/>
           </div>
         </div>
         </Collapsible>
       </div>
-
+      <button className="btn btn-block btn-primary homebutton">Submit</button>
     </form>
   );
   }

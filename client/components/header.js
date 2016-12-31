@@ -1,18 +1,20 @@
 var React = require('react');
+import {Link} from 'react-router';
 
 const Header = () => {
   return (
-    <nav className="nav navbar-default header">
-      <div className="navbar-header">
-        <h2 className="navbar-brand" id="headertext">IceBank Analyzer Financial Tool</h2>
-      </div>
-      <div className="form-group">
-        <span className="navbar-icon"><a href="#">Inputs</a></span>
-        <span className="navbar-icon"><a href="#">24-Hour Load profile</a></span>
-        <span className="navbar-icon"><a href="#">Financial Analysis</a></span>
-        <span className="navbar-icon"><a href="#">Ice vs. Conventional</a></span>
-      </div>
-    </nav>
+    <header className="site-header">
+        <span className="glyphicon glyphicon-equalizer headericon"></span>
+        <Link to="/">IceBank Analyzer</Link>
+      <nav className="site-nav">
+        <ul>
+          <li className=""><Link to="">Inputs</Link></li>
+          <li className=""><Link to="/details">Project Info</Link></li>
+          <li className=""><Link to="/loadgraph">24-Hour Load profile</Link></li>
+          <li className=""><Link to="/versus">Ice vs. Conventional</Link></li>
+        </ul>
+      </nav>
+    </header>
   );
 };
 

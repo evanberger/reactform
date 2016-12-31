@@ -1,4 +1,6 @@
 var React = require('react');
+import { observer } from 'mobx-react';
+import appState from '../appState';
 
 var Form = React.createClass({
   handleChange: function(event) {
@@ -13,8 +15,8 @@ var Form = React.createClass({
     // Here, this.props.onFormSubmit is just linking Parent to child
     // It has no other purpose.
     this.props.onFormSubmit(submittedData);
-    this.refs.load.value = 0;
-    this.refs.profile.value = '';
+    // this.refs.load.value = 0;
+    // this.refs.profile.value = '';
   },
 
   render: function () {
@@ -45,4 +47,4 @@ var Form = React.createClass({
 });
 
 // Export goes here
-module.exports = Form;
+module.exports = observer(Form);

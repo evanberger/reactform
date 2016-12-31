@@ -6,12 +6,20 @@
   },
   "dependencies": {
     "babel-runtime": "^6.18.0",
+    "bulma": "^0.2.3",
+    "d3": "^4.4.0",
+    "flexbox": "0.0.3",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.2",
-    "meteor-node-stubs": "~0.2.0",
+    "meteor-node-stubs": "^0.2.4",
+    "mobx": "^2.7.0",
+    "mobx-react": "^4.0.4",
     "react": "^15.4.1",
     "react-collapsible": "^1.2.0",
+    "react-d3": "^0.4.0",
     "react-dom": "^15.4.1",
-    "react-router": "^3.0.0"
+    "react-meteord3-basic": "^1.6.11",
+    "react-router": "^3.0.0",
+    "victory": "@0.14.2"
   }
 }
