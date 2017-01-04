@@ -3,6 +3,7 @@ var Homepage = require('./homepage');
 import { observer } from 'mobx-react';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import appState from '../appState';
+import LoadGraph from './load_graph';
 
 
 function commas(num) {
@@ -11,18 +12,18 @@ function commas(num) {
 
 var Versus = React.createClass({
   render: function() {
-    var standardChillerPlantCost = appState.standardChillerCost * appState.load;
-    var iceChillerPlantCost = 0.6 * appState.ddChillerCost * appState.load;
+    var standardChillerPlantCost = parseInt(appState.standardChillerCost * appState.load,10);
+    var iceChillerPlantCost = 0.6 * parseInt(appState.ddChillerCost * appState.load, 10);
     var icebanks = Math.ceil(0.4 * (appState.load/20));
-    var icebankPlantCost = icebanks * appState.icebankCost;
-    var PFHXCost = appState.load * appState.hxCost;
-    var additionalCost = appState.addlIceCost;
-    var rebateSavings = 0.4 * appState.load * appState.standardChillerEfficiency * appState.rebate;
-    var iceTotal = 0.1 * (iceChillerPlantCost + icebankPlantCost + appState.addlIceCost);
-    var demandCharge = 20, months = appState.coolingMonths, kWReduced = ((appState.load *0.4) * appState.standardChillerEfficiency);
+    var icebankPlantCost = parseInt(icebanks * appState.icebankCost, 10);
+    var PFHXCost = parseInt(appState.load * appState.hxCost, 10);
+    var additionalCost = parseInt(appState.addlIceCost, 10);
+    var rebateSavings = parseInt(0.4 * appState.load * appState.standardChillerEfficiency * appState.rebate, 10);
+    var iceTotal = (iceChillerPlantCost + icebankPlantCost + PFHXCost + additionalCost - rebateSavings);
+    var demandCharge = 20, months = appState.coolingMonths, kWReduced = parseInt(((appState.load *0.4) * appState.standardChillerEfficiency), 10);
     var totalSavings = demandCharge * months * kWReduced;
     var costDifference = iceTotal - standardChillerPlantCost;
-    var payback = costDifference / totalSavings; 
+    var payback = 0.1 * Math.round((10 * costDifference) / totalSavings); 
     console.log("Total ice costs are", iceTotal);
 
 
@@ -172,17 +173,7 @@ var Versus = React.createClass({
   <div className="row">
     <div className="col-xs-3"></div>
     <div className="col-xs-6">
-      <BarChart width={600} height={300} data={data}
-            margin={{top: 20, right: 30, left: 20, bottom: 5}}>
-       <XAxis dataKey="name"/>
-       <YAxis/>
-       <CartesianGrid strokeDasharray="3 3"/>
-       <Tooltip/>
-       <Legend />
-       <Bar dataKey="Icemelt" stackId="a" fill="aquamarine" />
-       <Bar dataKey="Icebuild" stackId="a" fill="#8884d8" />
-       <Bar dataKey="Chiller" stackId="a" fill="#82ca9d" />
-      </BarChart>
+      <LoadGraph />
     </div>
     <div className="col-xs-3"></div>
   </div>

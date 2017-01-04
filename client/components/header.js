@@ -1,5 +1,6 @@
 var React = require('react');
 import {Link} from 'react-router';
+import Accounts from './accounts';
 
 const Header = () => {
   return (
@@ -12,6 +13,7 @@ const Header = () => {
           <li className=""><Link to="/details">Project Info</Link></li>
           <li className=""><Link to="/loadgraph">24-Hour Load profile</Link></li>
           <li className=""><Link to="/versus">Ice vs. Conventional</Link></li>
+          <li className=""><Accounts /></li>
         </ul>
       </nav>
     </header>

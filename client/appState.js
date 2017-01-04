@@ -12,6 +12,8 @@ class AppState {
       chillerType: '',
       coolingMonths: 8,
       chillerTonnage: 0,
+      WCcheckboxChecked: false,
+      ACcheckboxChecked: false,
       standardChillerEfficiency: 0,
       ddChillerEfficiency: 0,
       iceMakingEfficiency: 0,

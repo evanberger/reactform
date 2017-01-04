@@ -4,140 +4,25 @@ import { observer } from 'mobx-react';
 import appState from '../appState';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
-    // var peakload = appState.load; 
-    // var scale = [0, peakload *.2, peakload *.4, peakload *.6, peakload *.8, peakload *1];
-    // var icemakingTons = [], chillerTons = [], iceDispatchTons = [];
-    // var numArray = [appState.HE1, appState.HE2, appState.HE3, appState.HE4, appState.HE5, appState.HE6, appState.HE7, appState.HE8, appState.HE9, appState.HE10, appState.HE11, appState.HE12, appState.HE13, appState.HE14, appState.HE15, appState.HE16, appState.HE17, appState.HE18, appState.HE19, appState.HE20, appState.HE21, appState.HE22, appState.HE23, appState.HE24];
-    // var typeArray = [appState.type1, appState.type2, appState.type3, appState.type4, appState.type5, appState.type6, appState.type7, appState.type8, appState.type9, appState.type10, appState.type11, appState.type12, appState.type13, appState.type14, appState.type15, appState.type16, appState.type17, appState.type18, appState.type19, appState.type20, appState.type21, appState.type22, appState.type23, appState.type24];
-    // var partialTons = 0, partialHrs = 0, fullTons = 0, fullHrs = 0, iceTons = 0; iceHrs = 0;
-    // console.log(appState);
-
-    //   for (var i = 0; i <= 23; i++) {
-    //     if (typeArray[i] == "partial" && numArray[i] > 0) {
-    //       partialTons += numArray[i];
-    //       partialHrs++;
-    //     } else if (typeArray[i] == "icemaking") {
-    //       iceTons += numArray[i];
-    //       iceHrs++;
-    //     } else if (typeArray[i] == "full") {
-    //       fullTons += numArray[i];
-    //       fullHrs++;
-    //     }
-    //   }
-    //   console.log("Number of Partial Storage hours: " + partialHrs);
-    //   console.log("Total Partial Storage tons: " + partialTons);
-    //   console.log("Number of Full Storage hours: " + fullHrs);
-    //   console.log("Total Full Storage tons: " + fullTons);
-
-    // // Calculate Full Storage Contribution first
-    //   var fullTonsPerHour = fullTons / iceHrs;
-    //   var fullTonsContribution = fullTonsPerHour / 0.65;
-    //   console.log("Full tons needed to make per hr: " + fullTonsPerHour);
-    //   console.log("Full tons 'contribution' to daytime load: " + fullTonsContribution);
-
-    // // Calculate key Partial Storage values
-    //   var maxPartialTons = 0, partialDiversity = 0, effectivePartialHrs = 0;
-
-    //   for (i=0; i < 24; i++) {
-    //     if (typeArray[i] == "partial" && numArray[i] > maxPartialTons) {
-    //       maxPartialTons = numArray[i];
-    //     }
-    //   }
-
-    //   partialDiversity = (partialTons/partialHrs) / maxPartialTons;
-    //   effectivePartialHrs = iceHrs * partialDiversity;
-
-    //   console.log("The highest Partial Storage hour is: " + maxPartialTons);
-    //   console.log("The diversity factor for Partial is: "  + partialDiversity);
-    //   console.log("The effective partial hours are: " + effectivePartialHrs);
-
-    // // Important "bottom of the spreadsheet" calculations
-    //   var totalPartialTonHrsAfterFullChiller = partialTons - (fullTonsContribution * partialHrs);
-    //   var partialTonsContribution = totalPartialTonHrsAfterFullChiller / (partialHrs + (0.65 * effectivePartialHrs));
-    //   var chillerSize = Math.ceil((partialTonsContribution + fullTonsContribution) / 10) * 10;
-    //   console.log("Chiller size is: " + chillerSize);
-
-    // // Number of IceBanks needed to satisy load
-    // // IBKey is the ton-hours per tank, based on the effective number of ice dispatch hours
-    //   var IBkey = [0, 42.5, 70, 103, 123.5, 130, 142, 148, 152, 152.5, 152.5, 153, 153];
-    //   var IBhours = Math.round(effectivePartialHrs);
-    //   var tonHrsPerTank = IBkey[IBhours];
-    //   var IBtonHrs = iceHrs * (chillerSize * 0.65);
-    //   var IceBanks = Math.ceil(IBtonHrs / tonHrsPerTank);
-    //   // appState.icebanks = IceBanks;
-    //   console.log("Icebanks equal", IceBanks);
-
-    // // Define the hourly chiller operation and the ice making and dispatch
-    //   for (var i=0; i < 24; i++) {
-    //     if (typeArray[i] == "icemaking") {
-    //       icemakingTons.push(chillerSize * 0.65);
-    //     } else { icemakingTons.push(0);}
-    //   }
-    //   for (var i=0; i < 24; i++) {
-    //     if (typeArray[i] == "full") {
-    //       iceDispatchTons.push(numArray[i]);
-    //     } else { iceDispatchTons.push(0);}
-    //   }
-    //   for (var i=0; i < 24; i++) {
-    //     chillerTons[i] = 0;
-    //     if (typeArray[i] == "partial") {
-    //       chillerTons[i] = Math.min(chillerSize, numArray[i]);
-    //       iceDispatchTons[i] = Math.max((numArray[i] - chillerSize), 0);
-    //     }
-    //   }
-
-
-
-    // // Create the Stacked Bar Chart Array
-    //   var stackedBar = [];
-    //   for (var i=0; i < 24; i++) {
-    //     stackedBar[i] = ["HE" + (i+1), icemakingTons[i], chillerTons[i], iceDispatchTons[i]]
-    //   }
-    //   console.log(stackedBar);
-    //   console.log("Ice-making schedule: " + icemakingTons);
-    //   console.log("Chiller schedule: " + chillerTons);
-    //   console.log("Ice Dispatch schedule: " + iceDispatchTons);
-    //   console.log(icemakingTons[0]);
-
-    //   const data = [
-    //   {name: 1, Ice-Making: icemakingTons[0], Chiller: chillerTons[0], Ice-Dispatch: iceDispatchTons[0]},
-    //   {name: 2, Ice-Making: icemakingTons[1], Chiller: chillerTons[1], Ice-Dispatch: iceDispatchTons[1]},
-    //   {name: 3, Ice-Making: icemakingTons[2], Chiller: chillerTons[2], Ice-Dispatch: iceDispatchTons[2]},
-    //   {name: 4, Ice-Making: icemakingTons[3], Chiller: chillerTons[3], Ice-Dispatch: iceDispatchTons[3]},
-    //   {name: 5, Ice-Making: icemakingTons[4], Chiller: chillerTons[4], Ice-Dispatch: iceDispatchTons[4]},
-    //   {name: 6, Ice-Making: icemakingTons[5], Chiller: chillerTons[5], Ice-Dispatch: iceDispatchTons[5]},
-    //   {name: 7, Ice-Making: icemakingTons[6], Chiller: chillerTons[6], Ice-Dispatch: iceDispatchTons[6]},
-    //   {name: 8, Ice-Making: icemakingTons[7], Chiller: chillerTons[7], Ice-Dispatch: iceDispatchTons[7]},
-    //   {name: 9, Ice-Making: icemakingTons[8], Chiller: chillerTons[8], Ice-Dispatch: iceDispatchTons[8]},
-    //   {name: 10, Ice-Making: icemakingTons[9], Chiller: chillerTons[9], Ice-Dispatch: iceDispatchTons[9]},      
-    //   {name: 11, Ice-Making: icemakingTons[10], Chiller: chillerTons[10], Ice-Dispatch: iceDispatchTons[10]},
-    //   {name: 12, Ice-Making: icemakingTons[11], Chiller: chillerTons[11], Ice-Dispatch: iceDispatchTons[11]},
-    //   {name: 13, Ice-Making: icemakingTons[12], Chiller: chillerTons[12], Ice-Dispatch: iceDispatchTons[12]},
-    //   {name: 14, Ice-Making: icemakingTons[13], Chiller: chillerTons[13], Ice-Dispatch: iceDispatchTons[13]},
-    //   {name: 15, Ice-Making: icemakingTons[14], Chiller: chillerTons[14], Ice-Dispatch: iceDispatchTons[14]},
-    //   {name: 16, Ice-Making: icemakingTons[15], Chiller: chillerTons[15], Ice-Dispatch: iceDispatchTons[15]},
-    //   {name: 17, Ice-Making: icemakingTons[16], Chiller: chillerTons[16], Ice-Dispatch: iceDispatchTons[16]},
-    //   {name: 18, Ice-Making: icemakingTons[17], Chiller: chillerTons[17], Ice-Dispatch: iceDispatchTons[17]},
-    //   {name: 19, Ice-Making: icemakingTons[18], Chiller: chillerTons[18], Ice-Dispatch: iceDispatchTons[18]},
-    //   {name: 20, Ice-Making: icemakingTons[19], Chiller: chillerTons[19], Ice-Dispatch: iceDispatchTons[19]},
-    //   {name: 21, Ice-Making: icemakingTons[20], Chiller: chillerTons[20], Ice-Dispatch: iceDispatchTons[20]},
-    //   {name: 22, Ice-Making: icemakingTons[21], Chiller: chillerTons[21], Ice-Dispatch: iceDispatchTons[21]},
-    //   {name: 23, Ice-Making: icemakingTons[22], Chiller: chillerTons[22], Ice-Dispatch: iceDispatchTons[22]},
-    //   {name: 24, Ice-Making: icemakingTons[23], Chiller: chillerTons[23], Ice-Dispatch: iceDispatchTons[23]}
-    // ];
-
-
 var LoadGraph = React.createClass({
   render: function() {
+    
     var peakload = appState.load;
     console.log("Within the LoadGraph, Peak Load equals", peakload);
+    console.log("HE1:", appState.HE1 + "HE12:", appState.HE12);
     var scale = [0, peakload *.2, peakload *.4, peakload *.6, peakload *.8, peakload *1];
     var icemakingTons = [], chillerTons = [], iceDispatchTons = [];
-    var numArray = [appState.HE1, appState.HE2, appState.HE3, appState.HE4, appState.HE5, appState.HE6, appState.HE7, appState.HE8, appState.HE9, appState.HE10, appState.HE11, appState.HE12, appState.HE13, appState.HE14, appState.HE15, appState.HE16, appState.HE17, appState.HE18, appState.HE19, appState.HE20, appState.HE21, appState.HE22, appState.HE23, appState.HE24];
+    var numArraystring = [appState.HE1, appState.HE2, appState.HE3, appState.HE4, appState.HE5, appState.HE6, appState.HE7, appState.HE8, appState.HE9, appState.HE10, appState.HE11, appState.HE12, appState.HE13, appState.HE14, appState.HE15, appState.HE16, appState.HE17, appState.HE18, appState.HE19, appState.HE20, appState.HE21, appState.HE22, appState.HE23, appState.HE24];
     var typeArray = [appState.type1, appState.type2, appState.type3, appState.type4, appState.type5, appState.type6, appState.type7, appState.type8, appState.type9, appState.type10, appState.type11, appState.type12, appState.type13, appState.type14, appState.type15, appState.type16, appState.type17, appState.type18, appState.type19, appState.type20, appState.type21, appState.type22, appState.type23, appState.type24];
     var partialTons = 0, partialHrs = 0, fullTons = 0, fullHrs = 0, iceTons = 0; iceHrs = 0;
-    console.log(appState);
     console.log("Hour 12 type:",appState.type12 + "; Hour 12 load:", appState.HE12);
+    console.log(typeArray);
+    var numArray = [];
+
+    for (var i = 0; i <= 23; i++) {
+      numArray[i] = parseInt(numArraystring[i],10);
+    }
+
       for (var i = 0; i <= 23; i++) {
         if (typeArray[i] == "partial" && numArray[i] > 0) {
           partialTons += numArray[i];
@@ -150,16 +35,18 @@ var LoadGraph = React.createClass({
           fullHrs++;
         }
       }
-      // console.log("Number of Partial Storage hours: " + partialHrs);
-      // console.log("Total Partial Storage tons: " + partialTons);
-      // console.log("Number of Full Storage hours: " + fullHrs);
-      // console.log("Total Full Storage tons: " + fullTons);
+      console.log("numArray check:", numArray[12]);
+      console.log("numArray check:", parseInt(numArray[12],10));
+      console.log("Number of Partial Storage hours: " + partialHrs);
+      console.log("Total Partial Storage tons: " + partialTons);
+      console.log("Number of Full Storage hours: " + fullHrs);
+      console.log("Total Full Storage tons: " + fullTons);
 
     // Calculate Full Storage Contribution first
       var fullTonsPerHour = fullTons / iceHrs;
       var fullTonsContribution = fullTonsPerHour / 0.65;
-      // console.log("Full tons needed to make per hr: " + fullTonsPerHour);
-      // console.log("Full tons 'contribution' to daytime load: " + fullTonsContribution);
+      console.log("Full tons needed to make per hr: " + fullTonsPerHour);
+      console.log("Full tons 'contribution' to daytime load: " + fullTonsContribution);
 
     // Calculate key Partial Storage values
       var maxPartialTons = 0, partialDiversity = 0, effectivePartialHrs = 0;
@@ -212,8 +99,6 @@ var LoadGraph = React.createClass({
         }
       }
 
-
-
     // Create the Stacked Bar Chart Array
       var stackedBar = [];
       for (var i=0; i < 24; i++) {
@@ -257,6 +142,7 @@ var LoadGraph = React.createClass({
           <div className="row">
             <div className="col-xs-3"></div>
             <div className="col-xs-6">
+              <h3 className="centered">Peak Day Cooling Load Profile (in tons)</h3>
               <BarChart width={600} height={300} data={data}
                           margin={{top: 20, right: 30, left: 20, bottom: 5}}>
                      <XAxis dataKey="name"/>
@@ -265,7 +151,7 @@ var LoadGraph = React.createClass({
                      <Tooltip/>
                      <Legend />
                      <Bar dataKey="Icemelt" stackId="a" fill="aquamarine" />
-                     <Bar dataKey="Icebuild" stackId="a" fill="#8884d8" />
+                     <Bar dataKey="Icebuild" stackId="a" fill="steelblue" />
                      <Bar dataKey="Chiller" stackId="a" fill="#82ca9d" />
               </BarChart> 
             </div>

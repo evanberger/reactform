@@ -3,9 +3,6 @@ import { observer } from 'mobx-react';
 import appState from '../appState';
 
 var Form = React.createClass({
-  handleChange: function(event) {
-    console.log('Changing text...');
-  },
   handleSubmit: function(event) {
     event.preventDefault();
     console.log(this.refs.load.value);

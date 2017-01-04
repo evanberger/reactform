@@ -154,7 +154,7 @@ onFormSubmit: function(e) {
       HE24: load * .1
   });
 
-} else if (profile=="High School") {
+  } else if (profile=="High School") {
     this.setState({
       HE1: 0,
       HE2: 0,
@@ -236,6 +236,30 @@ onFormSubmit: function(e) {
       HE24: load * .2
 });
 }
+    appState.HE1 = this.refs.HE1.value;
+    appState.HE2 = this.refs.HE2.value;
+    appState.HE3 = this.refs.HE3.value;
+    appState.HE4 = this.refs.HE4.value;
+    appState.HE5 = this.refs.HE5.value;
+    appState.HE6 = this.refs.HE6.value;
+    appState.HE7 = this.refs.HE7.value;
+    appState.HE8 = this.refs.HE8.value;
+    appState.HE9 = this.refs.HE9.value;
+    appState.HE10 = this.refs.HE10.value;
+    appState.HE11 = this.refs.HE11.value;
+    appState.HE12 = this.refs.HE12.value;
+    appState.HE13 = this.refs.HE13.value;
+    appState.HE14 = this.refs.HE14.value;
+    appState.HE15 = this.refs.HE15.value;
+    appState.HE16 = this.refs.HE16.value;
+    appState.HE17 = this.refs.HE17.value;
+    appState.HE18 = this.refs.HE18.value;
+    appState.HE19 = this.refs.HE19.value;
+    appState.HE20 = this.refs.HE20.value;
+    appState.HE21 = this.refs.HE21.value;
+    appState.HE22 = this.refs.HE22.value;
+    appState.HE23 = this.refs.HE23.value;
+    appState.HE24 = this.refs.HE24.value;
 },
   onHE1Change: function(e) {
     this.setState({HE1:e.target.value});
