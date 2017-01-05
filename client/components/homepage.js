@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Form from './form';
 import Table from './table';
 import BuildingForm from './bldg_form';
@@ -130,8 +129,6 @@ var Homepage = React.createClass({
               <div>Project Name: {appState.name}</div>
               <div>Peak Load: {appState.load}</div>
               <div>Profile: {appState.profile}</div>
-              <div>FPL Demand: {appState.fpl.demand}</div>
-              <div>FPL Demand: {appState.nextera[1] + 7}</div>
             </div>
             </div>
         </div>

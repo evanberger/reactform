@@ -17,8 +17,8 @@ class AppState {
       standardChillerEfficiency: 0,
       ddChillerEfficiency: 0,
       iceMakingEfficiency: 0,
-      standardChillerCost: 0,
-      ddChillerCost: 0,
+      standardChillerCost: 1250,
+      ddChillerCost: 1250,
       icebankCost: 20000,
       hxCost: 0,
       rebate: 0,
@@ -43,8 +43,35 @@ class AppState {
       chillerTons11: 0, chillerTons12: 0, chillerTons13: 0, chillerTons14: 0, chillerTons15: 0, chillerTons16: 0, chillerTons17: 0, chillerTons18: 0, chillerTons19: 0, chillerTons20: 0,
       chillerTons21: 0, chillerTons22: 0, chillerTons23: 0, chillerTons24: 0,
       icebanks: 0,
-      fpl: [{demand: "$20"}, {electricity: "6 cents"}],
-      nextera: [200, 40, 60]
+      utility: 
+        [
+          {
+            id: 'consumersMI',
+            name: 'Consumers Energy',
+            state: "MI",
+            rates: 
+              [
+                  {
+                  ratename: "GP",
+                  customercharge: 100,
+                  d12month: 0,
+                  d_s1: 0, d_s2: 0, d_s3: 0,
+                  d_o1: 0, d_o2: 0, d_o3: 0,
+                  c_s1: 0.096496, c_s2: 0, c_s3: 0,
+                  c_o1: 0.084887, c_02: 0, c_03: 0
+                },
+                {
+                  ratename: "GPD",
+                  customercharge: 100,
+                  d12month: 4.05,
+                  d_s1: 21.05, d_s2: 0, d_s3: 0, 
+                  d_o1: 18.05, d_o2: 0, d_o3: 0, 
+                  c_s1: 0.053574, c_s2: 0.03663, c_s3: 0,
+                  c_o1: 0.045596, c_02: 0.039786, c_03: 0
+                }
+              ]
+            }
+        ]
     });
   }
 }

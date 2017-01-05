@@ -5,14 +5,14 @@ import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recha
 import appState from '../appState';
 import LoadGraph from './load_graph';
 
-
 function commas(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
 var Versus = React.createClass({
   render: function() {
-    var standardChillerPlantCost = parseInt(appState.standardChillerCost * appState.load,10);
+    var standardChillerPlantCost = parseInt(appState.ddChillerCost * appState.load,10);
+    
     var iceChillerPlantCost = 0.6 * parseInt(appState.ddChillerCost * appState.load, 10);
     var icebanks = Math.ceil(0.4 * (appState.load/20));
     var icebankPlantCost = parseInt(icebanks * appState.icebankCost, 10);
@@ -38,9 +38,6 @@ var Versus = React.createClass({
     var chillerData = [{hour:1, load: 0},{hour:2, load: 0},{hour:3, load: 0},{hour:4, load: 0},{hour:5, load: 0},{hour:6, load: 0},{hour:7, load: 0},{hour:8, load: 0}, {hour:9, load: chiller}, {hour:10, load: chiller}, {hour:11, load: chiller}, {hour:12, load: chiller}, {hour:13, load: chiller}, {hour:14, load: chiller}, {hour:15, load: chiller}, {hour:16, load: chiller}, {hour:17, load: 0},{hour:18, load: 0},{hour:19, load: 0},{hour:20, load: 0},{hour:21, load: 0},{hour:22, load: 0},{hour:23, load: 0}, {hour: 24, load: 0}];
     var iceData = [{hour:1, load: 0},{hour:2, load: 0},{hour:3, load: 0},{hour:4, load: 0},{hour:5, load: 0},{hour:6, load: 0},{hour:7, load: 0},{hour:8, load: 0}, {hour:9, load: ice}, {hour:10, load: ice}, {hour:11, load: ice}, {hour:12, load: ice}, {hour:13, load: ice}, {hour:14, load: ice}, {hour:15, load: ice}, {hour:16, load: ice}, {hour:17, load: 0},{hour:18, load: 0},{hour:19, load: 0},{hour:20, load: 0},{hour:21, load: 0},{hour:22, load: 0},{hour:23, load: 0}, {hour:24, load: 0}];
     var num1 = appState.HE12, num2 = 200;
-    // var iceChillerPlantCostString = commas(iceChillerPlantCost), rebateSavingsString = commas(rebateSavings),
-    //       icebankPlantCostString = commas(icebankPlantCost), PFHXCostString = commas(PFHXCost),
-    //       additionalCostString = commas(additionalCost),  iceTotalString = commas(iceTotal);
           
     const data = [
       {name: 'HE1', Icebuild: iceMakingData[0].load, Chiller: chillerData[0].load, Icemelt: iceData[0].load}, 

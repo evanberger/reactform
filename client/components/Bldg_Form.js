@@ -56,7 +56,7 @@ var BuildingForm = React.createClass({
     });
   },
   handleWCcheckbox: function (e) {
-    appState.chillerType = "Air-Cooled";
+    appState.chillerType = "Water-Cooled";
     appState.standardChillerEfficiency = 0.8;
     appState.ddChillerEfficiency = 0.85;
     appState.iceMakingEfficiency = 0.9;
@@ -130,7 +130,7 @@ var BuildingForm = React.createClass({
       this.setState({ddChillerEfficiency: e.target.value });
       appState.ddChillerEfficiency = e.target.value;
   },
-  onIceMakingEfficiencyChangeceEfficiencyChange: function(e){
+  onIceMakingEfficiencyChange: function(e){
       this.setState({iceMakingEfficiency: e.target.value });
       appState.iceMakingEfficiency = e.target.value;
   },
@@ -300,7 +300,7 @@ var BuildingForm = React.createClass({
             <input
               onChange={this.onStandardChillerCostChange}
               value={appState.standardChillerCost}
-              ref="standardChillerCost" className="form-control" id="nonIceChillerCost" type="number" placeholder="500"/>
+              ref="standardChillerCost" className="form-control" id="standardChillerCost" type="number" placeholder="500"/>
             <div className="input-group-addon">/ton</div>
           </div>
         </div>
@@ -309,7 +309,7 @@ var BuildingForm = React.createClass({
           <div className="input-group col-xs-6">
             <div className="input-group-addon">$</div>
             <input
-              onChange={this.onDdChillerEfficiencyChange}
+              onChange={this.onDdChillerCostChange}
               value={appState.ddChillerCost}
               ref="ddChillerCost" className="form-control" id="icemakingChillerCost" type="number" placeholder="500" />
             <div className="input-group-addon">/ton</div>

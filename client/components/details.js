@@ -1,12 +1,8 @@
 var React = require('react');
 var Homepage = require('./homepage');
 import { observer } from 'mobx-react';
-var Chart = require('react-d3-core').Chart;
-var BarChart = require('react-d3-basic').BarChart;
-import { VictoryBar, VictoryAxis, VictoryChart, VictoryTheme, VictoryStack, VictoryLabel } from 'victory';
 import appState from '../appState';
-import Bar24 from './bar24';
-import {Sparklines, SparklinesBars} from 'react-sparklines';
+
 
 
 var ProjectDetails = React.createClass({
@@ -81,27 +77,7 @@ var ProjectDetails = React.createClass({
             <div className="input-group col-xs-6">{appState.iceMakingEfficiency} kW/ton</div>
           </div>
         </div>
-      <div>
-        <div id="detailsChart">
-            <VictoryChart domainPadding={20}>
-              <VictoryBar
-                data={datum1}
-                style={{
-                  data: {fill: (d) => d.y > 0 ? "steelblue" : "blue"},
-                  labels: {fontSize: 12},
-                  parent: {border: "1px solid #ccc"}
-                }}
-                labelComponent={
-                    <VictoryLabel angle={0} verticalAnchor="middle" textAnchor="end"/>
-                  }
-                x="hour"
-                y="load"
-               />
-               <VictoryAxis tickValues={[2,4,6,8,10,12,14,16,18,20,22,24]} />
-               <VictoryAxis dependentAxis tickValues={scale} />
-            </VictoryChart>
-          </div>
-        </div>
+
       </div>
     </div>
   );
