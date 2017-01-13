@@ -19,7 +19,7 @@ class AppState {
       iceMakingEfficiency: 0,
       standardChillerCost: 1250,
       ddChillerCost: 1250,
-      icebankCost: 20000,
+      icebankCost: 21000,
       hxCost: 0,
       rebate: 0,
       addlIceCost: 0,
@@ -43,7 +43,14 @@ class AppState {
       chillerTons11: 0, chillerTons12: 0, chillerTons13: 0, chillerTons14: 0, chillerTons15: 0, chillerTons16: 0, chillerTons17: 0, chillerTons18: 0, chillerTons19: 0, chillerTons20: 0,
       chillerTons21: 0, chillerTons22: 0, chillerTons23: 0, chillerTons24: 0,
       icebanks: 0,
-      utility: 
+      offseason: 0.6,
+      costDelta: 0,
+      utility: 'Florida Power & Light',
+      mockRate: 'LGS-Secondary',
+      mockDemand: 20.75, 
+      mockConsumption: 0.05,
+      mockTaxes: 6.5,
+      utilities: 
         [
           {
             id: 'consumersMI',
@@ -57,8 +64,12 @@ class AppState {
                   d12month: 0,
                   d_s1: 0, d_s2: 0, d_s3: 0,
                   d_o1: 0, d_o2: 0, d_o3: 0,
-                  c_s1: 0.096496, c_s2: 0, c_s3: 0,
-                  c_o1: 0.084887, c_02: 0, c_03: 0
+                  c_s1: 0.11411, c_s2: 0, c_s3: 0,
+                  c_o1: 0.102501, c_02: 0, c_03: 0,
+                  hd_s1: [1,24], h_s2: null, h_s3: null,
+                  hd_o1: [1,24], hd_o2: null, hd_o3: null,                  
+                  hc_s1: [1,24], hc_s2: null, hc_s3: null,
+                  hc_o1: [1,24], hc_o2: null, hc_o3: null
                 },
                 {
                   ratename: "GPD",
@@ -67,7 +78,58 @@ class AppState {
                   d_s1: 21.05, d_s2: 0, d_s3: 0, 
                   d_o1: 18.05, d_o2: 0, d_o3: 0, 
                   c_s1: 0.053574, c_s2: 0.03663, c_s3: 0,
-                  c_o1: 0.045596, c_02: 0.039786, c_03: 0
+                  c_o1: 0.045596, c_02: 0.039786, c_03: 0,
+                  hd_s1: [12,19], h_s2: [[1,11], [20,24]], h_s3: null,
+                  hd_o1: [12,19], h_o2: [[1,11], [20,24]], h_o3: null,  
+                  hc_s1: [12,19], hc_s2: [[1,11], [20,24]], hc_s3: null,
+                  hc_o1: [12,19], hc_o2: [[1,11], [20,24]], hc_o3: null                    
+                }
+              ]
+            },
+             {
+            id: 'fpl',
+            name: 'Florida Power & Light',
+            state: "FL",
+            rates: 
+              [
+                  {
+                  ratename: "GSLD1",
+                  customercharge: 59.51,
+                  d12month: 0,
+                  d_s1: 11.57, d_s2: 0, d_s3: 0,
+                  d_o1: 11.57, d_o2: 0, d_o3: 0,
+                  c_s1: 0.046, c_s2: 0, c_s3: 0,
+                  c_o1: 0.046, c_02: 0, c_03: 0,
+                  hd_s1: [1,24], hd_s2: null, hd_s3: null,
+                  hd_o1: [1,24], hd_o2: null, hd_o3: null,
+                  hc_s1: [1,24], hc_s2: null, hc_s3: null,
+                  hc_o1: [1,24], hc_o2: null, hc_o3: null
+                },
+                {
+                  ratename: "GSLDT1",
+                  customercharge: 59.51,
+                  d12month: 0,
+                  d_s1: 11.57, d_s2: 0, d_s3: 0, 
+                  d_o1: 11.57, d_o2: 0, d_o3: 0, 
+                  c_s1: 0.066, c_s2: 0.037, c_s3: 0,
+                  c_o1: 0.066, c_o2: 0.037, c_o3: 0,
+                  hd_s1: [13,19], hd_s2: [[1,12], [20,24]], hd_s3: 0,
+                  hd_o1: [13,19], hd_o2: [[1,12], [20,24]], hd_o3: 0,                  
+                  hc_s1: [13,19], hc_s2: [[1,12], [20,24]], hc_s3: 0,
+                  hc_o1: [13,19], hc_o2: [[1,12], [20,24]], hc_o3: 0
+                },
+                                {
+                  ratename: "GSLDT1-SDTR",
+                  customercharge: 25.96,
+                  d12month: 0,
+                  d_s1: 11.40, d_s2: 0, d_s3: 0, 
+                  d_o1: 9.78, d_o2: 0, d_o3: 0, 
+                  c_s1: 0.128, c_s2: 0.042, c_s3: 0,
+                  c_o1: 0.081, c_o2: 0.040, c_o3: 0,
+                  hd_s1: [16,18], hd_s2: null, hd_s3: null,
+                  hd_o1: [[7,10], [19,22]], hd_o2: null, hd_o3: null ,                 
+                  hc_s1: [16,18], hc_s2: null, hc_s3: null,
+                  hc_o1: [[7,10], [19,22]], hc_o2: null, hc_o3: null
                 }
               ]
             }

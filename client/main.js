@@ -17,7 +17,7 @@ var LoadGraph = require('./components/load_graph');
 var Homepage = require('./components/homepage');
 var ProjectDetails = require('./components/details');
 var Versus = require('./components/versus');
-var Analysis = require('./components/analysis');
+var FinanacialComparison = require('./components/financial_comp');
 
 
 // Create a component
@@ -28,10 +28,9 @@ Meteor.startup(() => {
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Homepage} />
-        <Route path="loadgraph" component={LoadGraph} />
         <Route path="details" component={ProjectDetails} />
         <Route path="versus" component={Versus} />
-        <Route path="analysis" component={Analysis} />
+        <Route path="analysis" component={FinanacialComparison} />
       </Route>
     </Router>
 , document.querySelector('.container'));

@@ -138,11 +138,9 @@ var LoadGraph = React.createClass({
     ];
 
       return (
-      <div>
-          <div className="row">
-            <div className="col-xs-3"></div>
-            <div className="col-xs-6">
-              <h3 className="centered">Peak Day Cooling Load Profile (in tons)</h3>
+        <div>
+          <div className="row">            
+            <div className="col-xs-12"> 
               <BarChart width={600} height={300} data={data}
                           margin={{top: 20, right: 30, left: 20, bottom: 5}}>
                      <XAxis dataKey="name"/>
@@ -155,7 +153,7 @@ var LoadGraph = React.createClass({
                      <Bar dataKey="Chiller" stackId="a" fill="#82ca9d" />
               </BarChart> 
             </div>
-            <div className="col-xs-3"></div>
+            
           </div>
     </div>
     );
@@ -166,6 +164,11 @@ var LoadGraph = React.createClass({
 module.exports = observer(LoadGraph);
 
 
+// var title = {<div className="row">
+//             <div className="col-xs-1"></div>
+//             <div className="col-xs-10"><h3>Peak Day Cooling Load Profile (in tons)</h3></div>
+//             <div className="col-xs-1"></div>
+//           </div>};
 
 
       // debugger

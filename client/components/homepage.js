@@ -118,13 +118,13 @@ var Homepage = React.createClass({
     return (
       <div>
         <div className="row">
-          <div className="col-xs-6">
+          <div className="col-xs-12 col-sm-6">
             <Form onFormSubmit={this.handleFormSubmit} />
              <div>-------------------</div>
              <Table load={appState.load} profile={appState.profile} />
           </div>
             <div className="row">
-            <div className="col-xs-6">
+            <div className="col-xs-12 col-sm-6">
               <BuildingForm onBuildingFormSubmit={this.handleBuildingFormSubmit} />
               <div>Project Name: {appState.name}</div>
               <div>Peak Load: {appState.load}</div>

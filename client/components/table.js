@@ -559,7 +559,7 @@ onFormSubmit: function(e) {
                     <td className="rightmost">
                       <input type="number" ref="HE6" id="HE6"
                         value={appState.HE6}
-                        onChange={this.onHE1Change} />
+                        onChange={this.onHE6Change} />
                     </td>
                   </tr>
                   <tr>

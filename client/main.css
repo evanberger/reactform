@@ -1,3 +1,7 @@
+body {
+  padding-top: 75px;
+}
+
 .headericon {
   color: whitesmoke;
   padding-right: 5px; 
@@ -123,7 +127,7 @@ select option {
 }
 
 /* Header component*/
-header {
+#nav {
   font-family: 'Roboto Condensed', sans-serif;
   background: #337ab7;
   display: flex;
@@ -131,14 +135,14 @@ header {
   padding-left: 10px;
 }
 
-header a {
+#nav a {
   font-family: 'Roboto Condensed', sans-serif;
   color: whitesmoke;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-.site-nav li {
+#nav li {
   font-size: 12px;
   font-family: 'Roboto Condensed', sans-serif;
   text-transform: uppercase;
@@ -148,7 +152,17 @@ header a {
   padding: 5px 10px;
 }
 
-.site-nav li:hover {
+#navbar-auth {
+  font-size: 12px;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+#nav li:hover {
   color: azure;
   text-decoration: none;
 }
@@ -183,4 +197,15 @@ header a {
 
 .centered {
   text-align: center;
+}
+
+/* for Analysis component*/
+.select2object {
+  width: 400px;
+}
+
+
+/*for FinancialComparison */
+.bottom-border { 
+  border-bottom: 1px solid black;
 }

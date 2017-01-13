@@ -16,7 +16,7 @@ class Accounts extends Component {
 
 	render() {
 	  return (
-	  	<div ref="container"></div>
+	  	<div id="navbar-auth" ref="container"></div>
 	  );
 	}
 }

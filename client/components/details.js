@@ -1,6 +1,7 @@
 var React = require('react');
 var Homepage = require('./homepage');
 import { observer } from 'mobx-react';
+import LoadGraph from './load_graph';
 import appState from '../appState';
 
 
@@ -77,7 +78,11 @@ var ProjectDetails = React.createClass({
             <div className="input-group col-xs-6">{appState.iceMakingEfficiency} kW/ton</div>
           </div>
         </div>
-
+      </div>
+      <div className="row">
+        <div className="col-xs-6">
+          <LoadGraph />
+        </div>
       </div>
     </div>
   );

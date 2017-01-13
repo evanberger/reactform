@@ -118,6 +118,8 @@ var BuildingForm = React.createClass({
   onChillerTypeChange: function(e){
       this.setState({chillerType: e.target.value });
       appState.chillerType = e.target.value;
+      appState.ACcheckboxChecked = false;
+      appState.WCcheckboxChecked = false;
   },
   // onChillerTonnageChange: function(e){
   //     this.setState({chillerTonnage: e.target.value })
@@ -171,10 +173,9 @@ var BuildingForm = React.createClass({
       appState.roundDuctSavings = e.target.value;
   },
     render: function () {
-
+      // /* <DevTools /> */ --> can go below
     return (
       <div>
-      <DevTools />
       <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
       <div>
         <Collapsible trigger="General Project Info" open="true">

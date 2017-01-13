@@ -21,7 +21,7 @@ var Versus = React.createClass({
     var rebateSavings = parseInt(0.4 * appState.load * appState.standardChillerEfficiency * appState.rebate, 10);
     var iceTotal = (iceChillerPlantCost + icebankPlantCost + PFHXCost + additionalCost - rebateSavings);
     var demandCharge = 20, months = appState.coolingMonths, kWReduced = parseInt(((appState.load *0.4) * appState.standardChillerEfficiency), 10);
-    var totalSavings = demandCharge * months * kWReduced;
+    var totalSavings = appState.costDelta;
     var costDifference = iceTotal - standardChillerPlantCost;
     var payback = 0.1 * Math.round((10 * costDifference) / totalSavings); 
     console.log("Total ice costs are", iceTotal);
@@ -70,69 +70,68 @@ var Versus = React.createClass({
      <div className="row">
        <div className="col-xs-2"></div>
        <div className="col-xs-4">
-      <table  className="table">
-        <tbody>
-          <tr>
-            <td><strong>Scenario 1: {appState.load}-ton chiller</strong></td>
-          </tr>
-          <tr>
-            <td>Chiller</td>
-            <td>${commas(standardChillerPlantCost)}</td>
-          </tr>
-          <tr><td>.</td></tr>
-          <tr><td>.</td></tr>
-          <tr><td>.</td></tr>
-          <tr><td>.</td></tr>
-          <tr><td>.</td></tr>
-          <tr className="summation">
-            <td>Total:</td>
-            <td><strong>${commas(standardChillerPlantCost)}</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div className="col-xs-4">
-      <table className="table">
-        <tbody>
-          <tr>
-            <td><strong>Scenario 2: {0.6 * appState.load}-ton chiller, {icebanks} IceBanks</strong></td>
-          </tr>
-          <tr>
-            <td>Chiller</td>
-            <td>${commas(iceChillerPlantCost)}</td>
-          </tr>
-          <tr>
-            <td>IceBanks</td>
-            <td>${commas(icebankPlantCost)}</td>
-          </tr>
-          <tr>
-            <td>PFHX</td>
-            <td>${commas(PFHXCost)}</td>
-          </tr>
-          <tr>
-            <td>less Mechanical Deducts</td>
-            <td>${0}</td>
-          </tr>
-          <tr>
-            <td>less Rebate</td>
-            <td className="red">${commas(rebateSavings)}</td>
-          </tr>
-          <tr>
-            <td>Additional Costs</td>
-            <td>${commas(additionalCost)}</td>
-          </tr>
-          <tr>
-            <td>Total:</td>
-            <td><strong>${commas(iceTotal)}</strong></td>
-          </tr>
-        </tbody>
+        <table  className="table">
+          <tbody>
+            <tr>
+              <td><strong>Scenario 1: {appState.load}-ton chiller</strong></td>
+            </tr>
+            <tr>
+              <td>Chiller</td>
+              <td>${commas(standardChillerPlantCost)}</td>
+            </tr>
+            <tr><td>.</td></tr>
+            <tr><td>.</td></tr>
+            <tr><td>.</td></tr>
+            <tr><td>.</td></tr>
+            <tr><td>.</td></tr>
+            <tr className="summation">
+              <td>Total:</td>
+              <td><strong>${commas(standardChillerPlantCost)}</strong></td>
+            </tr>
+          </tbody>
         </table>
        </div>
-       <div className="col-xs-2"></div>
+      <div className="col-xs-4">
+        <table className="table">
+          <tbody>
+            <tr>
+              <td><strong>Scenario 2: {0.6 * appState.load}-ton chiller, {icebanks} IceBanks</strong></td>
+            </tr>
+            <tr>
+              <td>Chiller</td>
+              <td>${commas(iceChillerPlantCost)}</td>
+            </tr>
+            <tr>
+              <td>IceBanks</td>
+              <td>${commas(icebankPlantCost)}</td>
+            </tr>
+            <tr>
+              <td>PFHX</td>
+              <td>${commas(PFHXCost)}</td>
+            </tr>
+            <tr>
+              <td>less Mechanical Deducts</td>
+              <td>${0}</td>
+            </tr>
+            <tr>
+              <td>less Rebate</td>
+              <td className="red">${commas(rebateSavings)}</td>
+            </tr>
+            <tr>
+              <td>Additional Costs</td>
+              <td>${commas(additionalCost)}</td>
+            </tr>
+            <tr>
+              <td>Total:</td>
+              <td><strong>${commas(iceTotal)}</strong></td>
+            </tr>
+          </tbody>
+          </table>
+        </div>
+        <div className="col-xs-2"></div>
       </div>
     <div className="row">
-    <div className="col-xs-4"></div>
-    <div className="col-xs-4">
+      <div className="col-xs-4">
       <table className="table">
         <tbody>
         <tr>
@@ -165,15 +164,8 @@ var Versus = React.createClass({
       </tbody>
       </table>
     </div>
-    <div className="col-xs-4"></div>
+    <div className="col-xs-4"><LoadGraph /></div>
     </div>
-  <div className="row">
-    <div className="col-xs-3"></div>
-    <div className="col-xs-6">
-      <LoadGraph />
-    </div>
-    <div className="col-xs-3"></div>
-  </div>
     </div>
     );
 }
