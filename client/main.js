@@ -8,16 +8,16 @@ var {Route, Router, IndexRoute,
   hashHistory, browserHistory} = require('react-router');
 var port = process.env.PORT  || 300;
 // import '../firebase/index';
-var App = require('./components/App');
-var Header = require('./components/header');
-var Form = require('./components/form');
-var Table = require('./components/table');
-var BuildingForm = require('./components/bldg_form');
-var LoadGraph = require('./components/load_graph');
-var Homepage = require('./components/homepage');
-var ProjectDetails = require('./components/details');
-var Versus = require('./components/versus');
-var FinanacialComparison = require('./components/financial_comp');
+var App = require('../imports/ui/components/App');
+var Header = require('../imports/ui/components/header');
+var Form = require('../imports/ui/components/form');
+var Table = require('../imports/ui/components/table');
+var BuildingForm = require('../imports/ui/components/bldg_form');
+var LoadGraph = require('../imports/ui/components/load_graph');
+var Homepage = require('../imports/ui/components/homepage');
+var ProjectDetails = require('../imports/ui/components/details');
+var Versus = require('../imports/ui/components/versus');
+var FinanacialComparison = require('../imports/ui/components/financial_comp');
 
 
 // Create a component

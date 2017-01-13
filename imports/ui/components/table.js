@@ -1,6 +1,6 @@
 var React = require('react');
 import { observer } from 'mobx-react';
-import appState from '../appState';
+import appState from '../../../client/appState';
 
 var Table = React.createClass({
   getDefaultProps: function() {

@@ -1,6 +1,6 @@
 var React = require('react');
 import Collapsible from 'react-collapsible';
-import appState from '../appState';
+import appState from '../../../client/appState';
 import DevTools from 'mobx-react-devtools';
 
 var BuildingForm = React.createClass({
@@ -121,20 +121,23 @@ var BuildingForm = React.createClass({
       appState.ACcheckboxChecked = false;
       appState.WCcheckboxChecked = false;
   },
-  // onChillerTonnageChange: function(e){
-  //     this.setState({chillerTonnage: e.target.value })
-  // },
   onStandardChillerEfficiencyChange: function(e){
       this.setState({standardChillerEfficiency: e.target.value });
       appState.standardChillerEfficiency = e.target.value;
+      appState.ACcheckboxChecked = false;
+      appState.WCcheckboxChecked = false;
   },
   onDdChillerEfficiencyChange: function(e){
       this.setState({ddChillerEfficiency: e.target.value });
       appState.ddChillerEfficiency = e.target.value;
+      appState.ACcheckboxChecked = false;
+      appState.WCcheckboxChecked = false;
   },
   onIceMakingEfficiencyChange: function(e){
       this.setState({iceMakingEfficiency: e.target.value });
       appState.iceMakingEfficiency = e.target.value;
+      appState.ACcheckboxChecked = false;
+      appState.WCcheckboxChecked = false;
   },
   onStandardChillerCostChange: function(e){
       this.setState({standardChillerCost: e.target.value });

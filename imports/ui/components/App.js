@@ -5,7 +5,7 @@ var Form = require('./form');
 var Table = require('./table');
 var BuildingForm = require('./bldg_form');
 import { observer } from 'mobx-react';
-import appState from '../appState'
+import appState from '../../../client/appState'
 
 
 var App = React.createClass({

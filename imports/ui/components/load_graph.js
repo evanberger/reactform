@@ -1,7 +1,7 @@
 var React = require('react');
 var Header = require('./header');
 import { observer } from 'mobx-react';
-import appState from '../appState';
+import appState from '../../../client/appState';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 var LoadGraph = React.createClass({

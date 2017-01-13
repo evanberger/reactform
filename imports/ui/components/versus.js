@@ -2,7 +2,7 @@ var React = require('react');
 var Homepage = require('./homepage');
 import { observer } from 'mobx-react';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
-import appState from '../appState';
+import appState from '../../../client/appState';
 import LoadGraph from './load_graph';
 
 function commas(num) {

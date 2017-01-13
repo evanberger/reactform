@@ -4,7 +4,7 @@ import Table from './table';
 import BuildingForm from './bldg_form';
 import { observer } from 'mobx-react';
 import Select2 from 'react-select2-wrapper';
-import appState from '../appState';
+import appState from '../../../client/appState';
 import 'react-select2-wrapper/css/select2.css';
 
 var utility = appState.utility;
@@ -77,6 +77,7 @@ var FinancialComparison = React.createClass({
 					<div className="col-xs-4">
 						<table className="table">
 						 <tbody>	
+							<tr><td><b>Rates Summary</b></td></tr>
 							<tr><td>Utility:</td> <td>{appState.utility}</td></tr>
 							<tr><td>Rate:</td> <td>{appState.mockRate}</td></tr>
 							<tr><td>Demand:</td><td>${appState.mockDemand}/kW</td></tr>
@@ -88,7 +89,7 @@ var FinancialComparison = React.createClass({
 					<div className="col-xs-4">
 						<table className="table">
 							<thead>
-								<tr><td>Scenario #1: Conventional Chiller</td></tr>
+								<tr><td><b>Scenario #1: Conventional Chiller</b></td></tr>
 								<tr><td>Chiller Size: {appState.load} tons</td></tr>
 								<tr><td><strong>Item</strong></td><td><b>Amount</b></td><td><b>Cost</b></td></tr>
 							</thead>
@@ -138,7 +139,7 @@ var FinancialComparison = React.createClass({
 					<div className="col-xs-4">
 						<table className="table">
 							<thead>
-								<tr><td>Scenario #2: Ice Chiller</td></tr>
+								<tr><td><b>Scenario #2: Ice Chiller</b></td></tr>
 								<tr><td>Chiller Size: {iceChillerSize} tons</td></tr>
 								<tr><td><strong>Item</strong></td><td><b>Amount</b></td><td><b>Cost</b></td></tr>
 							</thead>

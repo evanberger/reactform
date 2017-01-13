@@ -3,7 +3,7 @@ import Form from './form';
 import Table from './table';
 import BuildingForm from './bldg_form';
 import { observer } from 'mobx-react';
-import appState from '../appState';
+import appState from '../../../client/appState';
 
 var Homepage = React.createClass({
   /*getInitialState: function() {

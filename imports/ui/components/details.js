@@ -2,7 +2,7 @@ var React = require('react');
 var Homepage = require('./homepage');
 import { observer } from 'mobx-react';
 import LoadGraph from './load_graph';
-import appState from '../appState';
+import appState from '../../../client/appState';
 
 
 
