@@ -109,7 +109,7 @@ var FinancialComparison = React.createClass({
 								</tr>
 								<tr>
 									<td>Consumption</td>
-									<td className="bottom-border">{commas(convSummerConsumption)} kW</td>
+									<td className="bottom-border">{commas(convSummerConsumption)} kWh</td>
 									<td className="bottom-border">${commas(convSummerConsumptionCost)}</td>
 								</tr>
 								<tr>
@@ -125,7 +125,7 @@ var FinancialComparison = React.createClass({
 								</tr>
 								<tr>
 									<td>Consumption</td>
-									<td className="bottom-border">{commas(convOffseasonConsumption)} kW</td>
+									<td className="bottom-border">{commas(convOffseasonConsumption)} kWh</td>
 									<td className="bottom-border">${commas(convOffseasonConsumptionCost)}</td>
 								</tr>
 								<tr>
