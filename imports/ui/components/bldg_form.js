@@ -95,8 +95,31 @@ var BuildingForm = React.createClass({
     // Here, this.props.onFormSubmit is just linking Parent to child
     // It has no other purpose.
     this.props.onBuildingFormSubmit(submittedData);
-    console.log(submittedData.name);
-    console.log("Name is: " + appState.name);
+    var offSeasonMonths = appState.coolingMonths - 4;
+		var convSummerDemand = parseInt(appState.load * appState.standardChillerEfficiency,10);
+		var convSummerDemandCost = parseInt(convSummerDemand * appState.mockDemand, 10);
+		var convSummerConsumption = appState.load * 400;
+		var convSummerConsumptionCost = convSummerConsumption * appState.mockConsumption;
+		var convSummerCost = convSummerConsumptionCost + convSummerDemandCost;
+		var convOffseasonDemand = parseInt(appState.offseason * appState.load * appState.standardChillerEfficiency,10);
+		var convOffseasonDemandCost = parseInt(convOffseasonDemand * appState.mockDemand, 10);
+		var convOffseasonConsumption = appState.offseason * appState.load * 400;
+		var convOffseasonConsumptionCost = convOffseasonConsumption * appState.mockConsumption;
+		var convOffseasonCost = convOffseasonConsumptionCost + convOffseasonDemandCost;
+		var convCost = (4 * convSummerCost) + (offSeasonMonths * convOffseasonCost);
+		var iceChillerSize = 0.6 * appState.load;
+		var iceSummerDemand = parseInt(0.6* appState.load * appState.standardChillerEfficiency,10);
+		var iceSummerDemandCost = parseInt(iceSummerDemand * appState.mockDemand, 10);
+		var iceSummerConsumption = parseInt(1.1 * appState.load * 400,10);
+		var iceSummerConsumptionCost = iceSummerConsumption * appState.mockConsumption;
+		var iceSummerCost = parseInt(iceSummerConsumptionCost + iceSummerDemandCost,10);
+		var iceOffseasonDemand = parseInt(0.6 * appState.offseason * appState.load * appState.standardChillerEfficiency,10);
+		var iceOffseasonDemandCost = parseInt(iceOffseasonDemand * appState.mockDemand, 10);
+		var iceOffseasonConsumption = parseInt(1.1 * appState.offseason * appState.load * 400, 10);
+		var iceOffseasonConsumptionCost = parseInt(iceOffseasonConsumption * appState.mockConsumption,10);
+		var iceOffseasonCost = parseInt(iceOffseasonConsumptionCost + iceOffseasonDemandCost,10);
+		var iceCost = parseInt(((4 * iceSummerCost) + (offSeasonMonths * iceOffseasonCost)),10);
+		appState.costDelta = convCost - iceCost;
   },
   onNameChange: function(e){
       this.setState({name: e.target.value });

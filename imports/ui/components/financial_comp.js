@@ -56,7 +56,6 @@ var FinancialComparison = React.createClass({
 		var iceOffseasonCost = parseInt(iceOffseasonConsumptionCost + iceOffseasonDemandCost,10);
 		var iceCost = parseInt(((4 * iceSummerCost) + (offSeasonMonths * iceOffseasonCost)),10);
 		appState.costDelta = convCost - iceCost;
-		console.log(appState.costDelta);
 		return (
 			<div>
 				<div>
@@ -159,7 +158,7 @@ var FinancialComparison = React.createClass({
 								</tr>
 								<tr>
 									<td>Consumption</td>
-									<td className="bottom-border">{commas(iceSummerConsumption)} kW</td>
+									<td className="bottom-border">{commas(iceSummerConsumption)} kWh</td>
 									<td className="bottom-border">${commas(iceSummerConsumptionCost)}</td>
 								</tr>
 								<tr>
@@ -175,7 +174,7 @@ var FinancialComparison = React.createClass({
 								</tr>
 								<tr>
 									<td>Consumption</td>
-									<td className="bottom-border">{commas(iceOffseasonConsumption)} kW</td>
+									<td className="bottom-border">{commas(iceOffseasonConsumption)} kWh</td>
 									<td className="bottom-border">${commas(iceOffseasonConsumptionCost)}</td>
 								</tr>
 								<tr>
