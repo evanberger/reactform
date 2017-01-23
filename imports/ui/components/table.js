@@ -23,50 +23,7 @@ var Table = React.createClass({
       profile: "..."
     }
   },
-  //   var hourTypes = {
-  //     type1: this.refs.type1.value,
-  //     type2: this.refs.type2.value,
-  //     type3: this.refs.type3.value,
-  //     type4: this.refs.type4.value,
-  //     type5: this.refs.type5.value,
-  //     type6: this.refs.type6.value,
-  //     type7: this.refs.type7.value,
-  //     type8: this.refs.type8.value,
-  //     type9: this.refs.type9.value,
-  //     type10: this.refs.type10.value,
-  //     type11: this.refs.type11.value,
-  //     type12: this.refs.type12.value,
-  //     type13: this.refs.type13.value,
-  //     type14: this.refs.type14.value,
-  //     type15: this.refs.type15.value,
-  //     type16: this.refs.type16.value,
-  //     type17: this.refs.type17.value,
-  //     type18: this.refs.type18.value,
-  //     type19: this.refs.type19.value,
-  //     type20: this.refs.type20.value,
-  //     type21: this.refs.type21.value,
-  //     type22: this.refs.type22.value,
-  //     type23: this.refs.type23.value,
-  //     type24: this.refs.type24.value
-  //   }
-  // handleSubmit: function(e) {
-  //
-  //
-  //   var allTypesSelected = true;
-  //   for(var prop in hourTypes){
-  //     //var val = hourTypes[prop];
-  //     if(hourTypes[prop]==='none'){
-  //       // some value is not selected
-  //       allTypesSelected = false;
-  //       break;
-  //     }
-  //   }
-  //   this.setState({
-  //     allTypesSelected:allTypesSelected,
-  //     hourTypes: hourTypes,
-  //
-  //   })
-  // },
+
 
 onFormSubmit: function(e) {
   e.preventDefault();
@@ -182,7 +139,26 @@ onFormSubmit: function(e) {
       HE24: load * .0
     });
   } else if (profile=="Middle School") {
-    this.setState({
+    // var newHours = this.state.hours.map(function (val, index) {
+    // if (index < 6 || index > 18) {
+    //   val.load = 0;
+    //   return val;
+    // }
+    // switch(index) {
+    //   case 6:
+    //     val.load = load * 0.25;
+    //   case 7:
+    //   ....
+
+
+
+
+    // }
+    // return val;
+    // }) 
+    this.setState(
+      
+      {
       HE1: 0,
       HE2: 0,
       HE3: 0,
@@ -262,6 +238,7 @@ onFormSubmit: function(e) {
     appState.HE24 = this.refs.HE24.value;
 },
   onHE1Change: function(e) {
+
     this.setState({HE1:e.target.value});
     appState.HE1 = e.target.value;
   },
@@ -899,7 +876,4 @@ onFormSubmit: function(e) {
 
 module.exports = observer(Table);
 
-// var junk = [{HE1}, {HE2}, {HE3}, {HE4}, {HE5}, {HE6}, {HE7}, {HE8}, {HE9}, {HE10},
-// {HE11}, {HE12}, {HE13}, {HE14}, {HE15}, {HE16}, {HE17}, {HE18}, {HE19}, {HE20},
-// {HE21}, {HE22}, {HE23}, {HE24}
-// ];
+

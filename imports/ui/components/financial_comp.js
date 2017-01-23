@@ -21,9 +21,10 @@ var FinancialComparison = React.createClass({
   	},
 	onSelect2: function(event) {
 		this.setState({utility: event.target.value });
-		appState.utility = this.state.utility;
-		var rates = appState.utilities.map(function(utility) {return utility.rates;});
-		console.log(rates);
+    var selectUtility = this.state.utility;
+    appState.utility = selectUtility;
+		// var rates = appState.utilities.map(function(utility) {return utility.rates;});
+		// console.log(rates);
 	},
 	  onNameChange: function(e){
       this.setState({name: e.target.value });
@@ -62,8 +63,8 @@ var FinancialComparison = React.createClass({
 					<Select2
 					  className="select2object"
 					  ref="utility"
-					  value={appState.utility}
-					  onSelect={this.onSelect2} 
+					  value={this.state.utility}
+					  onSelect={this.onSelect2.bind(this)}
 					  data={[
 					    { text: 'Florida Power & Light', id: 'Florida Power & Light' },
 					    { text: 'Consumers Energy', id: 'Consumers Energy' },
@@ -75,9 +76,9 @@ var FinancialComparison = React.createClass({
 				<div className="row">
 					<div className="col-xs-4">
 						<table className="table">
-						 <tbody>	
+						 <tbody>
 							<tr><td><b>Rates Summary</b></td></tr>
-							<tr><td>Utility:</td> <td>{appState.utility}</td></tr>
+							<tr><td>Utility:</td> <td>{this.state.utility}</td></tr>
 							<tr><td>Rate:</td> <td>{appState.mockRate}</td></tr>
 							<tr><td>Demand:</td><td>${appState.mockDemand}/kW</td></tr>
 							<tr><td>Consumption:</td><td>${appState.mockConsumption} per kWh</td></tr>
@@ -134,7 +135,7 @@ var FinancialComparison = React.createClass({
 								</tr>
 							</tbody>
 						</table>
-					</div>					
+					</div>
 					<div className="col-xs-4">
 						<table className="table">
 							<thead>

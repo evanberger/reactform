@@ -28,6 +28,15 @@ class AppState {
       downsizeDuctSavings: 0,
       roundDuctSavings: 0,
       hours: [],
+      // hourEnds: [
+      //   {type: '', load: 0},
+      //   {type: '', load: 0},
+      // ]
+
+    //   newHourEnds = this.state.hourEnds;
+    //   newHourEnds[].value = newValue;
+    // this.setState({hourEnds:newHourEnds});
+
       HE1: 0, HE2: 0, HE3: 0, HE4: 0, HE5: 0, HE6: 0, HE7: 0, HE8: 0, HE9: 0, HE10: 0,
       HE11: 0, HE12: 0, HE13: 0, HE14: 0, HE15: 0, HE16: 0, HE17: 0, HE18: 0, HE19: 0, HE20: 0,
       HE21: 0, HE22: 0, HE23: 0, HE24: 0, type1: '', type2: '', type3: '', type4: '', type5: '', type6: '', type7: '', type8: '', type9: '', type10: '',
